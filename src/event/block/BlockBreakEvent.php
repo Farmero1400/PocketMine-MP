@@ -48,6 +48,7 @@ class BlockBreakEvent extends BlockEvent implements Cancellable{
 		protected bool $instaBreak = false,
 		array $drops = [],
 		protected int $xpDrops = 0
+		protected Block $blockAgainst
 	){
 		parent::__construct($block);
 		$this->setDrops($drops);
@@ -115,5 +116,9 @@ class BlockBreakEvent extends BlockEvent implements Cancellable{
 			throw new \InvalidArgumentException("Amount must be at least zero");
 		}
 		$this->xpDrops = $amount;
+	}
+
+	public function getBlockAgainst() : Block{
+		return $this->blockAgainst;
 	}
 }
